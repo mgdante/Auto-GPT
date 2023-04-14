@@ -11,10 +11,11 @@ cfg = Config()
 
 working_directory = "auto_gpt_workspace"
 
+
 def generate_image(prompt):
 
     filename = str(uuid.uuid4()) + ".jpg"
-    
+
     # DALL-E
     if cfg.image_provider == 'dalle':
 

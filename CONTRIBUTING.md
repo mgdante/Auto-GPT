@@ -6,7 +6,7 @@ To contribute to this GitHub project, you can follow these steps:
 2. Clone the repository to your local machine using the following command:
 
 ```
-git clone https://github.com/Torantulino/Auto-GPT
+git clone https://github.com/<YOUR-GITHUB-USERNAME>/Auto-GPT
 ```
 3. Create a new branch for your changes using the following command:
 
@@ -19,7 +19,7 @@ git checkout -b "branch-name"
 
 5. Add the changes to the staging area using the following command:
 ```
-git add . 
+git add .
 ```
 
 6. Commit the changes with a meaningful commit message using the following command:

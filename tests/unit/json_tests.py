@@ -5,18 +5,19 @@ import sys
 sys.path.append(os.path.abspath('../scripts'))
 from json_parser import fix_and_parse_json
 
+
 class TestParseJson(unittest.TestCase):
     def test_valid_json(self):
         # Test that a valid JSON string is parsed correctly
         json_str = '{"name": "John", "age": 30, "city": "New York"}'
         obj = fix_and_parse_json(json_str)
         self.assertEqual(obj, {"name": "John", "age": 30, "city": "New York"})
-    
+
     def test_invalid_json_minor(self):
         # Test that an invalid JSON string can be fixed with gpt
         json_str = '{"name": "John", "age": 30, "city": "New York",}'
         self.assertEqual(fix_and_parse_json(json_str, try_to_fix_with_gpt=False), {"name": "John", "age": 30, "city": "New York"})
-    
+
     def test_invalid_json_major_with_gpt(self):
         # Test that an invalid JSON string raises an error when try_to_fix_with_gpt is False
         json_str = 'BEGIN: "name": "John" - "age": 30 - "city": "New York" :END'
@@ -52,7 +53,7 @@ class TestParseJson(unittest.TestCase):
         good_obj = {
           "command": {
               "name": "browse_website",
-              "args":{
+              "args": {
                   "url": "https://github.com/Torantulino/Auto-GPT"
               }
           },
@@ -67,8 +68,6 @@ class TestParseJson(unittest.TestCase):
       }
         # Assert that this raises an exception:
         self.assertEqual(fix_and_parse_json(json_str, try_to_fix_with_gpt=False), good_obj)
-
-
 
     def test_invalid_json_leading_sentence_with_gpt(self):
         # Test that a REALLY invalid JSON string raises an error when try_to_fix_with_gpt is False
@@ -93,7 +92,7 @@ class TestParseJson(unittest.TestCase):
         good_obj = {
     "command": {
         "name": "browse_website",
-        "args":{
+        "args": {
             "url": "https://github.com/Torantulino/Auto-GPT"
         }
     },
@@ -108,7 +107,6 @@ class TestParseJson(unittest.TestCase):
 }
         # Assert that this raises an exception:
         self.assertEqual(fix_and_parse_json(json_str, try_to_fix_with_gpt=False), good_obj)
-
 
 
 if __name__ == '__main__':
